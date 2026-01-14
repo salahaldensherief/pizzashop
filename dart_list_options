@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const ListCheatSheet());
+}
+
+class ListCheatSheet extends StatelessWidget {
+  const ListCheatSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Dart List Cheat Sheet')),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+
+              Text('📌 Add Elements', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list.add(item) ➜ يضيف عنصر جديد'),
+              Text('list.addAll([a, b]) ➜ يضيف عدة عناصر'),
+
+              SizedBox(height: 10),
+              Text('📌 Remove Elements', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list.remove(item) ➜ يحذف أول عنصر مطابق'),
+              Text('list.removeAt(index) ➜ يحذف عنصر بالمكان'),
+              Text('list.removeWhere((e) => condition) ➜ يحذف حسب شرط'),
+              Text('list.clear() ➜ يمسح كل العناصر'),
+
+              SizedBox(height: 10),
+              Text('📌 Access Elements', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list[index] ➜ عنصر بالمكان'),
+              Text('list.first ➜ أول عنصر'),
+              Text('list.last ➜ آخر عنصر'),
+              Text('list.length ➜ عدد العناصر'),
+              Text('list.isEmpty ➜ هل الليست فاضية؟'),
+              Text('list.isNotEmpty ➜ هل فيها عناصر؟'),
+
+              SizedBox(height: 10),
+              Text('📌 Search & Filter', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list.contains(item) ➜ هل العنصر موجود؟'),
+              Text('list.any((e) => condition) ➜ هل أي عنصر يحقق الشرط؟'),
+              Text('list.every((e) => condition) ➜ هل كل العناصر تحقق الشرط؟'),
+              Text('list.firstWhere((e) => condition, orElse: () => null) ➜ أول عنصر يحقق الشرط'),
+              Text('list.indexWhere((e) => condition) ➜ مكان أول عنصر يحقق الشرط (-1 لو مش موجود)'),
+              Text('list.where((e) => condition).toList() ➜ فلترة عناصر حسب شرط'),
+
+              SizedBox(height: 10),
+              Text('📌 Transform & Iterate', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list.map((e) => newValue).toList() ➜ يحول كل عنصر لشكل جديد'),
+              Text('list.forEach((e) { ... }) ➜ يلف على كل عنصر بدون return'),
+
+              SizedBox(height: 10),
+              Text('📌 Aggregate & Compute', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list.fold(initial, (sum, e) => ...) ➜ تجميع القيم'),
+              Text('list.reduce((a, b) => ...) ➜ نفس fold بدون initial value'),
+
+              SizedBox(height: 10),
+              Text('📌 Sorting & Ordering', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('list.sort() ➜ ترتيب العناصر تصاعدي'),
+              Text('list.sort((a, b) => a.compareTo(b)) ➜ ترتيب مخصص'),
+              Text('list.reversed.toList() ➜ عكس ترتيب العناصر'),
+              Text('list.take(n).toList() ➜ أول n عناصر'),
+              Text('list.skip(n).toList() ➜ تخطي أول n عناصر'),
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

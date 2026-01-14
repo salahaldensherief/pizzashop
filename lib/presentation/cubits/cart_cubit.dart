@@ -14,6 +14,7 @@ class CartCubit extends Cubit<CartState> {
   void addPizzaRecommended(PizzaItemModel pizza) {
     final items = List<PizzaItemModel>.from(state.cart.items);
 
+
     var newPizza = pizza.cloneForCart();
     newPizza = newPizza.copyWith(quantity: 1);
 

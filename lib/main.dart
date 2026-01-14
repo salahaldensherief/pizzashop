@@ -6,7 +6,7 @@ import 'package:pizzashop/data/repos/pizza_repo.dart';
 import 'package:pizzashop/data/source/local/pizza_data_source.dart';
 import 'package:pizzashop/presentation/cubits/cart_cubit.dart';
 import 'package:pizzashop/presentation/cubits/layout_cubit.dart';
-import 'package:pizzashop/presentation/layout.dart';
+import 'package:pizzashop/presentation/layout_screen.dart';
 
 void main() {
   runApp(const MyApp());
