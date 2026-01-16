@@ -1,3 +1,4 @@
+
 class PizzaItemModel {
   final String? id;
   final String cartItemId;
@@ -42,6 +43,7 @@ class PizzaItemModel {
   PizzaItemModel cloneForCart() {
     return PizzaItemModel(
       id: id,
+      cartItemId: DateTime.now().microsecondsSinceEpoch.toString(),
       name: name,
       description: description,
       basePrice: basePrice,

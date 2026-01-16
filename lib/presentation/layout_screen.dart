@@ -39,13 +39,14 @@ class Layout extends StatelessWidget {
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) {
+
                   final pizza = pizzas[index];
                   final cartItem = cartState.cart.items.firstWhere(
                         (item) => item.id == pizza.id,
                     orElse: () => pizza.cloneForCart(),
                   );
                   return PizzaCard(
-                    pizza: pizza,
+                    pizza: cartItem,
                     quantity: cartItem.quantity,
                     onAdd: () => context.read<CartCubit>().addOrIncreasePizza(pizza),
                     onDecrease: () => context.read<CartCubit>().decreasePizzaInCart(pizza),

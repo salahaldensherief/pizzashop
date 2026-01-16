@@ -73,17 +73,17 @@ class PizzaCartScreen extends StatelessWidget {
                         physics:  NeverScrollableScrollPhysics(),
                         itemCount: cart.items.length,
                         itemBuilder: (context, index) {
-                          final pizza = cart.items[index];
+                          final cartItem = cart.items[index];
                           return Padding(
                             padding:  EdgeInsets.only(bottom: 16),
                             child: CartItem(
-                              pizza: pizza,
+                              pizza: cartItem,
                               onIncreaseQty: () => context
                                   .read<CartCubit>()
-                                  .addOrIncreasePizza(pizza),
+                                  .increaseQuantity(cartItem),
                               onDecreaseQty: () => context
                                   .read<CartCubit>()
-                                  .decreasePizzaInCart(pizza),
+                                  .decreasePizzaRecommendedInCart(cartItem),
                             ),
                           );
                         },

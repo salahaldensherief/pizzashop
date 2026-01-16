@@ -14,7 +14,6 @@ class CartCubit extends Cubit<CartState> {
   void addPizzaRecommended(PizzaItemModel pizza) {
     final items = List<PizzaItemModel>.from(state.cart.items);
 
-
     var newPizza = pizza.cloneForCart();
     newPizza = newPizza.copyWith(quantity: 1);
 
@@ -22,20 +21,27 @@ class CartCubit extends Cubit<CartState> {
 
     emit(state.copyWith(cart: state.cart.copyWith(items: items)));
   }
-
   void addOrIncreasePizza(PizzaItemModel pizza) {
     final items = List<PizzaItemModel>.from(state.cart.items);
 
     final index = items.indexWhere((e) => e.id == pizza.id);
 
     if (index == -1) {
-      items.add(
-        pizza.cloneForCart().copyWith(quantity: 1),
-      );
+      items.add(pizza.cloneForCart().copyWith(quantity: 1));
     } else {
       final item = items[index];
       items[index] = item.copyWith(quantity: item.quantity + 1);
     }
+
+    emit(state.copyWith(cart: state.cart.copyWith(items: items)));
+  }
+  void increaseQuantity(PizzaItemModel pizza) {
+    final items = List<PizzaItemModel>.from(state.cart.items);
+
+    final index = items.indexWhere((e) => e.cartItemId == pizza.cartItemId);
+    if (index == -1) return;
+
+    items[index] = items[index].copyWith(quantity: items[index].quantity + 1);
 
     emit(state.copyWith(cart: state.cart.copyWith(items: items)));
   }
@@ -55,9 +61,28 @@ class CartCubit extends Cubit<CartState> {
     emit(state.copyWith(cart: state.cart.copyWith(items: updatedItems)));
   }
 
+  void decreasePizzaRecommendedInCart(PizzaItemModel pizza) {
+    final index = state.cart.items.indexWhere(
+            (item) => item.cartItemId == pizza.cartItemId
+    );
+
+    if (index == -1) return;
+
+    final updatedItems = List<PizzaItemModel>.from(state.cart.items);
+    final item = updatedItems[index];
+
+    if (item.quantity > 1) {
+      updatedItems[index] = item.copyWith(quantity: item.quantity - 1);
+    } else {
+      updatedItems.removeAt(index);
+    }
+
+    emit(state.copyWith(cart: state.cart.copyWith(items: updatedItems)));
+  }
+
   void toggleOption(PizzaItemModel pizza, PizzaItemModel option) {
     final items = List<PizzaItemModel>.from(state.cart.items);
-    final index = items.indexWhere((e) => e.id == pizza.id);
+    final index = items.indexWhere((e) => e.cartItemId == pizza.cartItemId);
     if (index == -1) return;
 
     final currentItem = items[index];
@@ -74,7 +99,6 @@ class CartCubit extends Cubit<CartState> {
     items[index] = currentItem.copyWith(selectOptions: newSelectOptions);
     emit(state.copyWith(cart: state.cart.copyWith(items: items)));
   }
-
   void clearCart() {
     emit(
       state.copyWith(cart: state.cart.copyWith(items: [], discountInput: 0)),
@@ -111,9 +135,8 @@ class CartCubit extends Cubit<CartState> {
       (sum, item) => sum + itemTotalPrice(item),
     );
   }
-  double get totalPrice =>
-      subTotal + tax + deliveryFee - discountAmount;
 
+  double get totalPrice => subTotal + tax + deliveryFee - discountAmount;
 
   int get deliveryFee => state.cart.deliveryFee;
 
