@@ -7,7 +7,6 @@ class CartState {
   final CartModel cart;
   final PizzaItemModel pizza;
 
-
   const CartState({
     required this.cart,
     required this.pizza,

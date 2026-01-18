@@ -9,7 +9,6 @@ class CartModel {
   final DiscountType discountType;
    final double  discountInput;
 
-
   const CartModel({
     required this.items,
     this.deliveryFee = 5,

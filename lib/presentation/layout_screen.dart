@@ -39,7 +39,6 @@ class Layout extends StatelessWidget {
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) {
-
                   final pizza = pizzas[index];
                   final cartItem = cartState.cart.items.firstWhere(
                         (item) => item.id == pizza.id,

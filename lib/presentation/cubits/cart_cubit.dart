@@ -32,7 +32,6 @@ class CartCubit extends Cubit<CartState> {
       final item = items[index];
       items[index] = item.copyWith(quantity: item.quantity + 1);
     }
-
     emit(state.copyWith(cart: state.cart.copyWith(items: items)));
   }
   void increaseQuantity(PizzaItemModel pizza) {

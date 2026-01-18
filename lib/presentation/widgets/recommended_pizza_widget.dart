@@ -5,7 +5,6 @@ import 'package:pizzashop/presentation/widgets/pizza_select_card.dart';
 import '../../data/models/pizza_item_model.dart';
 import '../cubits/layout_cubit.dart';
 import '../cubits/layout_state.dart';
-
 class RecommendedPizzaWidget extends StatelessWidget {
   const RecommendedPizzaWidget({super.key, required this.onAdd});
   final Function(PizzaItemModel)? onAdd;

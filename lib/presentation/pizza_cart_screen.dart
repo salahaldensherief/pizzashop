@@ -88,7 +88,6 @@ class PizzaCartScreen extends StatelessWidget {
                           );
                         },
                       ),
-
                        SizedBox(height: 20),
                       RecommendedPizzaWidget(
                         onAdd: (pizza) {

@@ -52,7 +52,6 @@ class CheckoutScreen extends StatelessWidget {
             ),
 
             const SizedBox(height: 24),
-
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(

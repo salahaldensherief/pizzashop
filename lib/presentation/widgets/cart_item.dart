@@ -16,7 +16,6 @@ class CartItem extends StatelessWidget {
     this.onIncreaseQty,
     this.onDecreaseQty,
   });
-
   @override
   Widget build(BuildContext context) {
     return  Column(
